@@ -1,4 +1,13 @@
+#Snippet from my "YouTube Assistant" bot, enjoy!
 from functions import *
+
+class amount:
+    #Video/Channel/Playlist - max results amounts :)
+    video = 10
+    channel = 4
+    playlist = 2
+
+prefix = $$    
 
 if message.content.startswith(f"^youtube") or message.content.startswith(f"^Youtube") or message.content.startswith(f"^YouTube"):
     query = str(message.content.replace(f"{message.content.split()[0]} ", ""))
@@ -36,7 +45,7 @@ if message.content.startswith(f"^youtube") or message.content.startswith(f"^Yout
 
 
 
-        embed = discord.Embed(title=f"__Search Results__", description=" ", url='https://aero-bot.pro/', color=0x8000ff)
+        embed = discord.Embed(title=f"__Search Results__", description=" ", url='https://thebothub.host', color=0xFF0000)
         embed.set_author(name="YouTube Assistant", url='https://aero-bot.pro/', icon_url='https://cdn.discordapp.com/attachments/635586855567622147/636112733439262742/maxresdefault.jpg')
         embed.set_thumbnail(url="https://cdn.discordapp.com/attachments/635586855567622147/636121471659540480/giphy.gif")
 
@@ -48,7 +57,7 @@ if message.content.startswith(f"^youtube") or message.content.startswith(f"^Yout
 
             embed.add_field(name=f" __Video:__\n#{str(int(x + 1))} | {title}", value=f"[Watch Video]({link})", inline=True)
 
-            if x == 12: break 
+            if x == amount.video: break 
 
 
         for x in range(0, len(channels)):
@@ -59,7 +68,7 @@ if message.content.startswith(f"^youtube") or message.content.startswith(f"^Yout
 
             embed.add_field(name=f"__Channel:__\n#{str(int(x + 1))} | {user}", value=f"[Go To Channel]({link})", inline=True)
 
-            if x == 5: break 
+            if x == amount.channel: break 
 
 
 
@@ -71,7 +80,7 @@ if message.content.startswith(f"^youtube") or message.content.startswith(f"^Yout
 
             embed.add_field(name=f"__Playlist:__\n#{str(int(x + 1))} | {playlist}", value=f"[Go To Playlist]({link})", inline=True)
 
-            if x == 2: break 
+            if x == amount.playlist: break 
 
         embed.set_footer(text=f"Requested By {message.author} in #{message.channel}.")
         await message.channel.send("", embed=embed)

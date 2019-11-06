@@ -16,7 +16,7 @@ async def on_member_remove(member):
     except Exception as EE:
         failed = True
         stuff = f"**logging:**\n```\ndiff\n-{str(EE)}```"
-    channel = client.get_channel(logging_channel)   #Any Channel ID Can Go Here, As Long As In Guild!** 
+    channel = client.get_channel(logging_channel)   #Any Channel ID Can Go Here, As Long As In Guild!*
     if failed == False:
         stuff = f"**Logging: <@{member.id}> just left the guild. Successfully Cleared `{count}` messages!**"
     await channel.send(stuff)

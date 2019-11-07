@@ -13,6 +13,10 @@ class amount:
     video = 10
     channel = 4
     playlist = 1
+    
+def convert_html(string):
+    string = string.replace('&quot;', '"').replace("amp;", "").replace("&#39;", "'")
+    return string
 
 class log:
     def log(thing):
@@ -47,7 +51,7 @@ async def on_message(message):
             search_response = youtube.search().list(
             q=query,
             part='id,snippet',
-            maxResults=max_res).execute()
+            maxResults=30).execute()
 
             videos = []
             channels = []

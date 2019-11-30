@@ -27,12 +27,12 @@ async def on_message(message):
 
     if message.content.startswith(prefix("hello")):
         # Do Jobs Here // ...
-        reply = str(f"{message.content.replace(prefix, "")}!")
+        reply = str(f'{message.content.replace(prefix, "")}!')
         await message.channel.send(reply)
 
     if message.content.startswith(prefix("goodbye")):
         # Do Jobs Here // ...
-        reply = str(f"{message.content.replace(prefix, "")}!")
+        reply = str(f'{message.content.replace(prefix, "")}!')
         await message.channel.send(reply)
 
 

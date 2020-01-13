@@ -1,7 +1,9 @@
 import discord #Discord py
+from datetime import datetime
+
 
 # SECRET TOKEN
-token = "NDFDSasdf54Wga#WFh.iDSaAgtyessdfgkjdflgl.rfdg"
+token = "NjQ5MDAzNTkwMjU3NzM3NzM5.XhqjOw.c0vqUU3I_ZWNXw-huHoNRc3BA_8"
 
 client=discord.Client() #DEFINES CLIENT OBJECT
 
@@ -9,6 +11,9 @@ prefix = "$$" # Here's your prefix!
 
 rp = "my first bot come to life!"
 
+class glbl:
+    begin = datetime.now()
+    
 # ASYNCHRONOUS DEFINITIONS/SEQUENCE BEGINS
 
 # ON_READY():
@@ -19,6 +24,8 @@ rp = "my first bot come to life!"
 # "Usually after login is successful and the Client cache is ready."
 async def on_ready():
     print('-\n[Ok] - Succesfully logged in as {0.user} Via Discord Official API!'.format(client))
+    
+    
 
     #SETTING RICH PRESENCE ON READY
     activity = discord.Activity(name=rp, type=discord.ActivityType.watching)
@@ -42,5 +49,17 @@ async def on_message(message):
         int_2 = int(message.content.split()[3])
         answer = int(int_1 + int_2)
         await message.channel.send(f"{str(int_1)} + {str(int_2)} = {str(answer)}, <@{message.author.id}>!")
+
+    if message.content.startswith(f"{prefix}uptime"):
+        await message.channel.send(f"I have been up for {str(uptime())} minutes!")
+        
+def uptime():
+    #Get timestamp when called.
+    now = datetime.now()
+    if glbl.begin > now:
+        uptime = glbl.begin - now
+    else:
+        uptime = now - glbl.begin
+    return int(round(uptime.total_seconds() / 60))
 
 client.run(token)   #INITIALIZE CLIENT/CONNECTION 

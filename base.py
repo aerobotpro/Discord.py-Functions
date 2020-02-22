@@ -37,7 +37,8 @@ async def on_ready():
 async def on_message(message):
     if message.author == client.user:
         return
-
+    if message.author == client.bot:
+        return
     if message.content.startswith(f"{prefix}hello"):
         # Do Jobs Here // .
         await message.channel.send(f"Hello <@{message.author.id}>!")

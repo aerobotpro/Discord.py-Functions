@@ -35,9 +35,10 @@ async def on_ready():
 # "Called when a Message is recieved."
 @client.event 
 async def on_message(message):
-    if message.author == client.user:
+    userobj = client.get_user(message.author.id)
+    if userobj == client.user:
         return
-    if message.author == client.bot:
+    if userobj.bot:
         return
     if message.content.startswith(f"{prefix}hello"):
         # Do Jobs Here // .
